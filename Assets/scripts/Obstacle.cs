@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// o gravity scale dessa classe deve ser setada no unity como 0 , pra não reagir a gravidade
+/// e o body type como kinematic - quer dizer que ele não vai responder a física a não ser q eu configure
+/// </summary>
 public class Obstacle : MonoBehaviour
 {
     [SerializeField]
@@ -14,7 +18,8 @@ public class Obstacle : MonoBehaviour
         transform.Translate(Vector3.left * speed * Time.deltaTime);
 
         //Time.deltaTime tempo entre a última chamada update() e a atual 
-    }
+    }     
+    
     private void Awake()
     {
         transform.Translate(Vector3.up * Random.Range(-positionY, positionY));
@@ -25,6 +30,11 @@ public class Obstacle : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        this.Destroy();
+    }
+
+    private void Destroy()
+    {
+        Destroy(gameObject); // gameObject objeto da unity pra destuir este objeto
     }
 }

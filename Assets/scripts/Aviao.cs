@@ -4,27 +4,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Aviao : MonoBehaviour
-{
+{    
     // FORÇA = ACELERAÇAO X MASSA
     // FORCA É GRAVIDADE
     [SerializeField]
     private float force = 6;
     private Rigidbody2D phisic;
+    private SceneDirector sceneDirector; 
     /// <summary>
     /// Este metodo e chamado pelo Unity assim que o objeto 
     /// for criado
     /// </summary>
     private void Awake()
     {
-        phisic = GetComponent<Rigidbody2D>();
+        phisic = GetComponent<Rigidbody2D>(); // pego componente que está dentro do meu proprio objeto ou seja o avião
+        sceneDirector = FindObjectOfType<SceneDirector>(); // isso é bem pesado então NÃO FAZER dentro do update()
         
-    }
-    // Start is called before the first frame update
-    private void Start()
+    }   
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        phisic.simulated = false;
+        sceneDirector.FinalizeGame();
     }
-
+    
     // Update is called once per frame
     private void Update()
     {
@@ -33,12 +35,12 @@ public class Aviao : MonoBehaviour
             this.PullUp();
         }
     }
-
     
     private void PullUp()
     {
         // toda força gera uma velocidade, então preciso anular a última força - zerando a velocidade
         phisic.velocity = Vector2.zero;
         this.phisic.AddForce(Vector2.up * force, ForceMode2D.Impulse);
-    }
+    }    
+   
 }

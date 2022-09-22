@@ -7,7 +7,7 @@ public class ObstacleGenerator : MonoBehaviour
     [SerializeField]
     private float timeToGenerate;
     [SerializeField]
-    private GameObject obstaclePrefab; 
+    private GameObject obstaclePrefab; // manual de instruções que é o obstaculo criado arrastado pra dentro da assets/script
 
     private float cronometer; // vai me informar quanto tempo ja passou 
 

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Floor : MonoBehaviour
+/// <summary>
+/// Responsável por replicar as imagens do piso e do fundo junto com a velocidade no eixo X da direita pra esquerda
+/// </summary>
+public class Carrousel : MonoBehaviour
 {
     [SerializeField]
     private float speed = 0.1f;

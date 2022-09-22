@@ -37,6 +37,8 @@ public class Aviao : MonoBehaviour
     
     private void PullUp()
     {
+        // toda força gera uma velocidade, então preciso anular a última força - zerando a velocidade
+        phisic.velocity = Vector2.zero;
         this.phisic.AddForce(Vector2.up * force, ForceMode2D.Impulse);
     }
 }

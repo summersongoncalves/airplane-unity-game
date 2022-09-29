@@ -18,13 +18,14 @@ public class Obstacle : MonoBehaviour
     void Update()
     {// mover o obstaculo da direita pra esquerda 
         transform.Translate(Vector3.left * speed * Time.deltaTime);
+        Debug.Log($"{transform.position.x}");
         //Time.deltaTime tempo entre a última chamada update() e a atual 
         if(!hasScored && transform.position.x < planePosition.x) // marcar ponto se passar pelo obstaculo
         {
-            Debug.Log("pontou");
-            Debug.Log($"posição aviao x : {planePosition.x}, Posição barreira: {transform.position.x}");
-
+            
+            Debug.Log($"Pontuou!! \n Posição barreira: {transform.position.x}");
             hasScored = true;
+            Debug.Break();
         }
     }     
     private void Start()

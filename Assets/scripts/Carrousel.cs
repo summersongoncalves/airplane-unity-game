@@ -28,3 +28,9 @@ public class Carrousel : MonoBehaviour
         transform.position = startPosition + Vector3.left * displacement;
     }
 }
+/*
+GetComponent<TIPO>() e o FindObjectOfType<TIPO>()  
+método GetComponent busca as dependências dentro do 
+próprio objeto onde está nosso componente. 
+O método FindObjectOfType busca a dependência dentro da cena inteira. 
+ */

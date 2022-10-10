@@ -14,23 +14,22 @@ public class Obstacle : MonoBehaviour
     private float positionY;
     private Vector3 planePosition;
     private bool hasScored;
+    private Score score;
     // Update is called once per frame
     void Update()
     {// mover o obstaculo da direita pra esquerda 
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
-        Debug.Log($"{transform.position.x}");
+        transform.Translate(Vector3.left * speed * Time.deltaTime);       
         //Time.deltaTime tempo entre a última chamada update() e a atual 
         if(!hasScored && transform.position.x < planePosition.x) // marcar ponto se passar pelo obstaculo
-        {
-            
-            Debug.Log($"Pontuou!! \n Posição barreira: {transform.position.x}");
+        { 
             hasScored = true;
-            Debug.Break();
+            score.AddScores();
         }
     }     
     private void Start()
     {
         planePosition = FindObjectOfType<Aviao>().transform.position;
+        score = FindObjectOfType<Score>();
     }
 
     private void Awake()

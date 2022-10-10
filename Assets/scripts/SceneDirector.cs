@@ -7,7 +7,8 @@ public class SceneDirector : MonoBehaviour
 {
     [SerializeField]
     private GameObject gameOverImage; // o diretor da scena sabe quem é a imagem pq ta setada manualmente no input habilitado na IDE
-    private Aviao airPlane;    
+    private Aviao airPlane;
+    private Score score;
     public void FinalizeGame()
     {
         Time.timeScale = 0; // pauso o tempo da unity 
@@ -20,13 +21,15 @@ public class SceneDirector : MonoBehaviour
     void Start()
     {
         airPlane = FindObjectOfType<Aviao>(); // isso é bem pesado então NÃO FAZER dentro do update() 
+        score = FindObjectOfType<Score>(); // pq busca a dependencia dentro da cena inteira.
     }
     public void RestartGame()
     {
         gameOverImage.SetActive(false);
         Time.timeScale = 1;
-        this.airPlane.Restart();
-        this.DestroyAllObstacles();
+        airPlane.Restart();
+        DestroyAllObstacles();
+        score.RestartScore();
 
     }
 

@@ -60,6 +60,7 @@
      <Compile Include="Assets\scripts\Obstacle.cs" />
      <Compile Include="Assets\scripts\ObstacleGenerator.cs" />
      <Compile Include="Assets\scripts\SceneDirector.cs" />
+     <Compile Include="Assets\scripts\Score.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
